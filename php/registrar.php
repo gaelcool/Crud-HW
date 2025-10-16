@@ -1,4 +1,7 @@
 <?php
+echo "<pre>POST Data: ";
+print_r($_POST);
+echo "</pre>";
 include 'conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
