@@ -2,23 +2,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include "conexion.php"; // Archivo de conexión a la base de datos
-
-// Check request method
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
-    exit;
-}
-
-
 $conexion = mysqli_connect("localhost", "root", "", "bd_pruepa");  
 $conexion->set_charset("utf8");   
-
-if (!$conexion){
-    echo json_encode(['success' => false, 'message' => 'Error al conectar con la base de datos']);
-    exit;
+/* 
+<!-- Remember, this is the most basic operation that must be ran to connect to the db, must have db started --> */
+if (!$conexion) {
+    echo "Error al conectar a la base de datos: " . mysqli_connect_error();
 }
 else {
-    echo json_encode(['success' => true, 'message' => 'Conexión exitosa']);
-}
+    echo "Conexión exitosa a la base de datos.";
+}   
 ?>

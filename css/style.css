@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
   background: #121212; /* deep dark base */
@@ -35,6 +41,18 @@ section::before {
 }
 
 
+
+@keyframes animateBg {
+  0% {
+    filter: grayscale(30%) brightness(0.4);
+  }
+  50% {
+    filter: grayscale(70%) brightness(0.35);
+  }
+  100% {
+    filter: grayscale(40%) brightness(0.45);
+  }
+}
 
 /* Main container (dark translucent glass) */
 .login-container {
@@ -85,7 +103,7 @@ h2 {
   position: relative;
   margin: 20px 0;
 }
-
+/* Transition */
 .input-box input {
   width: 100%;
   padding: 12px 45px 12px 15px;
@@ -101,6 +119,27 @@ h2 {
 .input-box input:focus {
   border-color: #00b8b8;
   background: rgba(255, 255, 255, 0.08);
+}
+
+input:invalid {
+border-color: red;
+}
+
+
+input:valid {
+border-color: green;
+}
+
+
+input:focus:invalid + label::after {
+content: " ← Corrige esto";
+color: red;
+}
+
+
+input:focus:valid + label::after {
+content: " ✓";
+color: green;
 }
 
 /* Floating labels */
@@ -259,17 +298,5 @@ button:hover {
     height: 225px;
     padding: 25px;
     filter: none !important;    
-  }
-}
-
-@keyframes animateBg {
-  0% {
-    filter: grayscale(30%) brightness(0.4);
-  }
-  50% {
-    filter: grayscale(70%) brightness(0.35);
-  }
-  100% {
-    filter: grayscale(40%) brightness(0.45);
   }
 }
