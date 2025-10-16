@@ -4,7 +4,7 @@ print_r($_POST);
 echo "</pre>";
 include 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST["usuario"])) {
     // Receive input
     $nombre = trim($_POST['nombre'] ?? '');
     $apellidos = trim($_POST['apellidos'] ?? '');
