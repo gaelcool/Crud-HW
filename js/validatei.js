@@ -53,7 +53,7 @@ function validar() {
             retryBtn.classList.remove('show');
 
             try {
-                const response = await fetch('api/conexion.php');
+                const response = await fetch('php/conexion.php');
                 const data = await response.json();
 
                 loader.style.display = 'none';
