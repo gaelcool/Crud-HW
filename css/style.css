@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,15 +6,14 @@
 }
 
 body {
-  background: #121212; /* deep dark base */
+  background: #121212;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #e0e0e0; /* default text color for contrast */
+  color: #e0e0e0;
 }
 
-/* Fullscreen section container */
 section {
   position: relative;
   display: flex;
@@ -24,7 +23,6 @@ section {
   height: 100vh;
 }
 
-/* Animated background overlay (dark, subtle motion) */
 section::before {
   content: '';
   position: absolute;
@@ -32,7 +30,7 @@ section::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('bg.jpg');
+  background-image: url('/images/bg.jpg');
   background-size: cover;
   background-position: center;
   animation: animateBg 5s linear infinite;
@@ -40,21 +38,15 @@ section::before {
   z-index: -1;
 }
 
-
-
 @keyframes animateBg {
-  0% {
-    filter: grayscale(30%) brightness(0.4);
+  0%, 100% {
+    filter: grayscale(40%) brightness(0.4);
   }
   50% {
     filter: grayscale(70%) brightness(0.35);
   }
-  100% {
-    filter: grayscale(40%) brightness(0.45);
-  }
 }
 
-/* Main container (dark translucent glass) */
 .login-container {
   display: flex;
   justify-content: center;
@@ -68,7 +60,6 @@ section::before {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Left half: form */
 .login-left {
   flex: 1;
   display: flex;
@@ -77,18 +68,12 @@ section::before {
   padding: 40px;
 }
 
-/* Right half: image or branding */
 .login-right {
-  display: flex;
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background: url('B3.jpg') no-repeat center center;
+  background: url('/images/B3.jpg') no-repeat center center;
   background-size: cover;
   filter: brightness(0.6) grayscale(40%);
 }
-
-
 
 h2 {
   font-size: 28px;
@@ -98,12 +83,11 @@ h2 {
   margin-bottom: 20px;
 }
 
-
 .input-box {
   position: relative;
   margin: 20px 0;
 }
-/* Transition */
+
 .input-box input {
   width: 100%;
   padding: 12px 45px 12px 15px;
@@ -121,28 +105,24 @@ h2 {
   background: rgba(255, 255, 255, 0.08);
 }
 
-input:invalid {
-border-color: red;
+.input-box input:invalid {
+  border-color: red;
 }
 
-
-input:valid {
-border-color: green;
+.input-box input:valid {
+  border-color: green;
 }
 
-
-input:focus:invalid + label::after {
-content: " ← Corrige esto";
-color: red;
+.input-box input:focus:invalid + label::after {
+  content: " ← Corrige esto";
+  color: red;
 }
 
-
-input:focus:valid + label::after {
-content: " ✓";
-color: green;
+.input-box input:focus:valid + label::after {
+  content: " ✓";
+  color: green;
 }
 
-/* Floating labels */
 .input-box label {
   position: absolute;
   left: 15px;
@@ -160,7 +140,6 @@ color: green;
   color: #00d0d0;
 }
 
-/* Input icons */
 .input-box .icon {
   position: absolute;
   right: 15px;
@@ -169,11 +148,9 @@ color: green;
   color: #00b8b8;
 }
 
-/* Full name text uppercase */
 #fullname {
   text-transform: uppercase;
 }
-
 
 button {
   width: 100%;
@@ -188,13 +165,11 @@ button {
   transition: all 0.3s ease;
 }
 
-/* Button hover animation — metallic glow */
 button:hover {
   background: linear-gradient(145deg, #3a3a3a, #222);
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
 }
-
 
 .register-link {
   font-size: 0.9em;
@@ -215,7 +190,6 @@ button:hover {
   color: #00ffff;
 }
 
-/* Remember/Forgot password area */
 .remember-forget {
   margin: -15px 0 15px;
   font-size: 0.9em;
@@ -237,7 +211,6 @@ button:hover {
   text-decoration: underline;
 }
 
-
 .validation-box {
   position: absolute;
   right: -170px;
@@ -249,12 +222,11 @@ button:hover {
   background: #1f1f1f;
   color: #ddd;
   font-size: 0.9em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 2;
 }
 
-/* Invalid */
 .validation-box.invalid {
   background: #3a0000;
   color: #ff4c4c;
@@ -262,7 +234,6 @@ button:hover {
   display: block;
 }
 
-/* Valid */
 .validation-box.valid {
   background: #003a00;
   color: #4df59a;
@@ -270,20 +241,19 @@ button:hover {
   display: block;
 }
 
-/* Alerts below form */
 .alert {
   text-align: center;
   margin-top: 15px;
   font-weight: 500;
 }
+
 .alert.success {
   color: #4df59a;
 }
+
 .alert.error {
   color: #ff6b6b;
 }
-
-
 
 @media (min-width: 800px) {
   .login-container {
@@ -297,6 +267,6 @@ button:hover {
     width: 100%;
     height: 225px;
     padding: 25px;
-    filter: none !important;    
+    filter: none !important;
   }
 }
