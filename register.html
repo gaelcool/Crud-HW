@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="/js/validatei.js"></script> <!-- Simple imports and freeing up validatei.js -->
+</head>
+<body>
+  <section>
+    <div class="login-container">
+      <div class="login-left">
+        <div class="login-box">
+          <!-- Link to desired atribution defining script -->
+          <form action="/php/registrar.php" method="POST">
+            <h2>¡Bienvenido!</h2>
+<!-- Just make sure the names coincide, they ARE case sensitive! -->
+            <div class="input-box">
+              <span class="icon"><ion-icon name="person"></ion-icon></span>
+              <input type="text" name="nombre" required />
+              <label>Nombre</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+              <input type="text" name="apellidos" required />
+              <label>Apellidos</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" name="correo" required />
+              <label>Correo electrónico</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><ion-icon name="at-circle"></ion-icon></span>
+              <input type="text" name="usuario" required />
+              <label>Usuario</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" name="clave" required />
+              <label>Contraseña</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><ion-icon name="call"></ion-icon></span>
+              <input type="text" name="telefono" required />
+              <label>Teléfono</label>
+            </div>
+                              <!--  -->
+            <button type="submit">Registrarse</button>
+
+            <div id="message" class="alert"></div>
+
+            <div class="register-link">
+              <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="login-right"></div> <!-- I dont know what this line does -->
+    </div>
+  </section>
+  <script src="/js/script.js"></script>
+</body>
+</html>
