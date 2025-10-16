@@ -16,6 +16,10 @@
             <h2>¡Bienvenido!</h2>
 <!-- Just make sure the names coincide, they ARE case sensitive! -->
             
+<div class="input-box">
+<input type="text" name="nombres" pattern="[A-ZÁÉÍÓÚ]+" title="Usa solo mayúsculas" required>
+<label>Nombre</label>
+ </div>
 
 <div class="input-box">
 <input type="text" name="apellidos" pattern="[A-ZÁÉÍÓÚÑ ]+" title="Usa solo mayúsculas" required>
@@ -42,7 +46,7 @@
 
 
 <div class="input-box">
-<input type="tel" name="telefono" pattern="[0-9]{10}" title="10 dígitos" required>
+<input type="tel" name="telefono" pattern="[0-8]{8}" title="8 dígitos" required>
 <label>Teléfono</label>
 </div>
 
