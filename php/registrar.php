@@ -3,47 +3,53 @@ echo "<pre>POST Data: ";
 print_r($_POST);
 echo "</pre>";
 include 'conexion.php';
+// Get form data
+$nombre = $_POST["nombre"];
+$apellidos = $_POST["apellidos"];
+$correo = $_POST["correo"];
+$usuario = $_POST["usuario"];
+$clave = $_POST["clave"];
+$telefono = $_POST["telefono"];
 
-if (isset($_POST["usuario"])) {
-    // Receive input
-    $nombre = trim($_POST['nombre'] ?? '');
-    $apellidos = trim($_POST['apellidos'] ?? '');
-    $correo = trim($_POST['correo'] ?? '');
-    $usuario = trim($_POST['usuario'] ?? '');
-    $clave = trim($_POST['clave'] ?? '');
-    $telefono = trim($_POST['telefono'] ?? '');
+// Check if user already exists
+$verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE usuario = '$usuario'");
 
-    // Basic check
-    if (empty($nombre) || empty($apellidos) || empty($correo) || empty($usuario) || empty($clave) || empty($telefono)) {
-        echo "<script>alert('Por favor completa todos los campos'); window.history.back();</script>";
-        exit;
-    }
-
-    // Check for duplicates
-    $check = $conexion->prepare("SELECT * FROM usuarios WHERE usuario = ? OR correo = ?");
-    $check->bind_param('ss', $usuario, $correo);
-    $check->execute();
-    $result = $check->get_result();
-
-    if ($result->num_rows > 0) {
-        echo "<script>alert('El usuario o correo ya existe'); window.history.back();</script>";
-        $check->close();
-        $conexion->close();
-        exit;
-    }
-    $check->close();
-
-    // Insert new user
-    $stmt = $conexion->prepare("INSERT INTO usuarios (nombre, apellidos, correo, usuario, clave, telefono) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssss', $nombre, $apellidos, $correo, $usuario, $clave, $telefono);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('¡Registro exitoso!'); window.location.href='../login.html';</script>";
-    } else {
-        echo "<script>alert('Error al registrar. Inténtalo de nuevo.'); window.history.back();</script>";
-    }
-
-    $stmt->close();
-    $conexion->close();
+if (mysqli_num_rows($verificar_usuario) > 0) {
+    echo '<script>
+        alert("EL USUARIO YA ESTA REGISTRADO");
+        window.history.go(-1);
+    </script>';
+    exit;
 }
+
+// Check if email already exists
+$verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo = '$correo'");
+
+if (mysqli_num_rows($verificar_correo) > 0) {
+    echo '<script>
+        alert("EL CORREO YA ESTA REGISTRADO");
+        window.history.go(-1);
+    </script>';
+    exit;
+}
+
+// Insert new user
+$insertar = "INSERT INTO usuarios (nombre, apellidos, correo, usuario, clave, telefono) 
+             VALUES ('$nombre', '$apellidos', '$correo', '$usuario', '$clave', '$telefono')";
+
+$resultado = mysqli_query($conexion, $insertar);
+
+if ($resultado) {
+    echo '<script>
+        alert("REGISTRO EXITOSO");
+        window.location = "login.html";
+    </script>';
+} else {
+    echo '<script>
+        alert("ERROR AL REGISTRAR");
+        window.history.go(-1);
+    </script>';
+}
+
+mysqli_close($conexion);
 ?>
